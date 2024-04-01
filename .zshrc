@@ -41,13 +41,13 @@ ZSH_THEME="aussiegeek"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -100,3 +100,29 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
+
+export YES=1
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+# Automatically add SSH key to ssh-agent
+SSH_KEY_PATH="$HOME/.ssh/github" # Change to your SSH key path
+if [ -f "$SSH_KEY_PATH" ]; then
+    ssh-add -l | grep "$SSH_KEY_PATH" > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Adding SSH key to ssh-agent github..."
+        ssh-add "$SSH_KEY_PATH"
+    fi
+fi
+
+export KITTY_CONFIG_DIRECTORY="/home/shady/dots/kitty"
