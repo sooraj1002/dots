@@ -115,14 +115,7 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 
-# Automatically add SSH key to ssh-agent
-#SSH_KEY_PATH="$HOME/.ssh/github" # Change to your SSH key path
-#if [ -f "$SSH_KEY_PATH" ]; then
-#    ssh-add -l | grep "$SSH_KEY_PATH" > /dev/null
-#    if [ $? -ne 0 ]; then
-#        echo "Adding SSH key to ssh-agent github..."
-#        ssh-add "$SSH_KEY_PATH"
-#    fi
-#fi
 
 export KITTY_CONFIG_DIRECTORY="/home/shady/dots/kitty"
+
+export EDITOR="nvim"
