@@ -70,7 +70,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,4 +118,5 @@ fi
 
 export KITTY_CONFIG_DIRECTORY="/home/shady/dots/kitty"
 
-export EDITOR="nvim"
+export GOPATH=$HOME/go
+alias yt='web_search youtube'
