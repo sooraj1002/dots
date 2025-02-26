@@ -17,3 +17,14 @@ Enable and start the service
 systemctl --user enable ssh-agent.service
 systemctl --user start ssh-agent.service
 ```
+
+# Install cuda
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/cuda_12.6.2_560.35.03_linux.run
+```
+
+```bash
+umask 022
+sudo sh cuda_12.6.2_560.35.03_linux.run
+```
