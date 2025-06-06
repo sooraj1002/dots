@@ -116,7 +116,19 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 
-export KITTY_CONFIG_DIRECTORY="/home/shady/dots/kitty"
+# export KITTY_CONFIG_DIRECTORY= "/Users/soorajkashyap/dots/kitty"
 
 export GOPATH=$HOME/go
 alias yt='web_search youtube'
+
+touch ~/.hushlogin
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+
+export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+export PATH="/usr/local/mysql/bin:$PATH"
