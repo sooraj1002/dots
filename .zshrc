@@ -112,3 +112,12 @@ alias yt='web_search youtube'
 export PATH=/usr/local/cuda-12.6/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 export CUDA_HOME=/usr/local/cuda-12.6
+
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# bun completions
+[ -s "/home/shady/.bun/_bun" ] && source "/home/shady/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
