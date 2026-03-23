@@ -113,7 +113,7 @@ export PATH=/usr/local/cuda-12.6/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 export CUDA_HOME=/usr/local/cuda-12.6
 
-export PATH=$PATH:$(go env GOPATH)/bin
+# export PATH=$PATH:$(go env GOPATH)/bin
 
 # bun completions
 [ -s "/home/shady/.bun/_bun" ] && source "/home/shady/.bun/_bun"
@@ -130,3 +130,10 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
+
+
+# Auto-enter tmux for interactive SSH logins
+# Pass NO_TMUX=1 via SSH (e.g. ssh -o SetEnv=NO_TMUX=1 host) to skip
+if [[ -n "$SSH_TTY" && -z "$TMUX" && $- == *i* && -z "$NO_TMUX" ]]; then
+   tmux new-session -A -s main
+fi
