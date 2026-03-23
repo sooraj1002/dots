@@ -130,3 +130,18 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
+
+
+hs() {
+  local extra_opts=""
+
+  # Check for --no-tmux flag
+  if [[ "$1" == "--no-tmux" ]]; then
+    shift
+    kitten ssh -o "SetEnv NO_TMUX=1" homeserver "$@"
+    return
+  fi
+
+  # Default: use kitten ssh (with tmux)
+  kitten ssh homeserver "$@"
+}
