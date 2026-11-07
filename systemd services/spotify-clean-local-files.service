@@ -1,0 +1,9 @@
+[Unit]
+Description=Delete Spotify local-files.bnk
+
+[Service]
+Type=oneshot
+ExecStart=%h/dots/spotify/clean-local-files.sh
+
+[Install]
+WantedBy=default.target
