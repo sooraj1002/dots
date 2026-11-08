@@ -1,3 +1,10 @@
+# SSH: auto-attach to a per-client-IP tmux session (prevents infinite loop via $TMUX guard)
+if [[ -n "$SSH_CONNECTION" && -z "$TMUX" ]]; then
+    _ssh_ip="${SSH_CONNECTION%% *}"
+    _tmux_session="ssh_${_ssh_ip//[.:]/_}"
+    exec tmux new-session -A -s "$_tmux_session"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
